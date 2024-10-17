@@ -1,20 +1,20 @@
-
-[{"cod": "01", "name": "papas", "proveedor": "norte", "cantidad": []}]
-[{"cod": "01", "name": "papas", "proveedor": "norte", "cantidad": []}]
-[{"cod": "01", "name": "papas", "proveedor": "norte", "cantidad": []}]
-[{"cod": "01", "name": "las", "proveedor": "as", "cantidad": []}]
-[{"cod": "01", "name": "asd", "proveedor": "ad", "cantidad": []}]
-[{"cod": "01", "name": "asd", "proveedor": "as", "cantidad": []}]
-[{"cod": "01", "name": "papas", "proveedor": "norte", "cantidad": []}]
-[{"cod": "01", "name": "papas", "proveedor": "norte", "cantidad": []}]
-[{"cod": "01", "name": "paps", "proveedor": "norte", "cantidad": []}]
-[{"cod": "01", "name": "papas", "proveedor": "norte", "cantidad": []}]
-[{"cod": "01", "name": "papas", "proveedor": "norte", "cantidad": []}]
-[{"cod": "01", "name": "papas", "bodega": "norte", "cantidad": []}]
-[{"cod": "01", "name": "papas", "bodega": "norte", "cantidad": []}]
-[{"cod": "01", "name": "papas", "bodega": "norte", "cantidad": []}]
-{"cod": "01", "name": "papas", "bodega": "norte", "cantidad": []}
-{"cod": "01", "name": "papas", "bodega": "norte", "cantidad": []}
-{"cod": "01", "name": "papas", "bodega": "norte", "cantidad": []}
-{"cod": "01", "name": "papas", "bodega": "norte", "cantidad": []}
-{"cod": "01", "name": "lulo", "bodega": "norte", "cantidad": []}
+[
+    {
+        "cod": 3,
+        "name": "arroz",
+        "proveedor": "rosa",
+        "cantidad": 0
+    },
+    {
+        "cod": "01",
+        "name": "papas",
+        "proveedor": "lola",
+        "cantidad": 0
+    },
+    {
+        "cod": "02",
+        "name": "pera",
+        "proveedor": "pepe",
+        "cantidad": 0
+    }
+]
