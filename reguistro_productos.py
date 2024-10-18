@@ -2,12 +2,12 @@
 import json
 
 
-def menu(localtime):
+def menu():
             print("""
         ===========================================
         ============= Menu Bancario ===============
         =                                         =
-        =   1. Registrar un producto             =
+        =   1. Registrar un producto              =
         =   2. ingresar producto al inventadio    =
         =   3. Retirar producto del inventadio    =
         =   4. Bucar un producto                  =
@@ -51,20 +51,18 @@ def creacion():
 #|                INGRESO DE PRODUCTOS                    |
 #==========================================================
 
-def ingreso(productos,localtime):
+def ingreso():
 
   stock = None
   try:
     file = open('inventario.json', 'r')
-    inventario = json.load(file)
+    stock = json.load(file)
     file.close
   except Exception as error:
           stock = []
-  print("ingrese el cod")
-  cod = int(input("ingrese el codigo del producto = "))
-
-  for producto in inventario:
-      if producto["cod"] == cod:
+  cod = input("ingrese el codigo del producto = ")
+  for producto in stock:
+    if producto['cod'] == cod:
         print("indique la bodega a la cual desea ingresar nuevas existencias")
         ing = input("""
           ____________________
@@ -86,20 +84,23 @@ def ingreso(productos,localtime):
           try:
             producto["bodega"] = bodega
             print(f"El porducto al cual va a adicionar stock es {producto['name']} se van a agredar existencias a la {bodega}")
-            cantidad = int(input("indique la cantidad que desea agregar = "))
+            agregar = int(input("indique la cantidad que desea agregar = "))
           except ValueError:print("Codido de producto errado")
-  #====================================================================================
+          producto["cantidad"] += agregar
+        for entrada in stock:
+            if entrada["cantidad"] == producto["cantidad"]:
+              movimiento ={
+                "tipo": "Ingreso de mercansia",
+                "descripccio": f"Se agregaron {producto['cantidad']} kg de {producto['name']}",
+                "bodega":[bodega],
+                # "fecha": f"{localtime()}",
+              }
+              print(movimiento)
 
-        elif productos["cantidad"] <= 0:
-          print("no se puede ingresar cantidades negativas")
-          break
-
-  #====================================================================================
-
-      producto["cantidad"] += cantidad
-      for producto in inventario:
-          if 
-
+  stock.append(producto)
+  file = open('stock.json', 'w')
+  json.dump(stock,file,indent=4)
+  file.close
 
 #==========================================================
 #==========================================================
@@ -110,12 +111,36 @@ def ingreso(productos,localtime):
 # no se puede retirar si no cuenta con las exitencias
 # descripccion de retiro
 
-def retiro_productos(productos, producto):
+def retiro_productos():
+  stock = None
+  try:
+    file = open('stock.json', 'r')
+    stock = json.load(file)
+    file.close
+  except Exception as error:
+          stock = []
+
   print("ingrese el codigo del producto que desea retirar")
   cod = input("=>  ")
-  bodega = print("ingrese la bodega en la cual se encuentra el producto")
-  input("=>  ")
+  # bodega = print("ingrese la bodega en la cual se encuentra el producto")
+  # input("=>  "); and producto["bodega"] == bodega
 
-  for producto in productos:
-    if producto["cod"] == cod and producto["bodega"] == bodega:
+  for producto in stock:
+    if producto["cod"] == cod:
       print(f"El producto que va a retirara es {producto['name']}, el cual se encuentra en la {producto['bodega']}")
+      try:
+        agregar = int(input("indique la cantidad que desea retirar = "))
+      except ValueError:print("Codido de producto errado")
+      producto["cantidad"] -= agregar
+      for entrada in stock:
+            if entrada["cantidad"] == producto["cantidad"]:
+              movimiento ={
+                "tipo": "retiro de mercansia",
+                "descripccio": f"Se retiro {producto['cantidad']} kg de {producto['name']}",
+                # "fecha": f"{localtime()}",
+              }
+              print(movimiento)
+  stock.append(producto)
+  file = open('stock.json', 'w')
+  json.dump(stock,file,indent=4)
+  file.close

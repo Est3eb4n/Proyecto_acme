@@ -1,20 +1,8 @@
 [
     {
-        "cod": 3,
-        "name": "arroz",
-        "proveedor": "rosa",
-        "cantidad": 0
-    },
-    {
         "cod": "01",
         "name": "papas",
         "proveedor": "lola",
-        "cantidad": 0
-    },
-    {
-        "cod": "02",
-        "name": "pera",
-        "proveedor": "pepe",
         "cantidad": 0
     }
 ]

@@ -14,12 +14,12 @@ while True:
 
         Porfavor escoja una de la siguientes opcciones
         """)
-    menu(asctime)
+    menu()
     opc = input(" => ")
 
     if opc == "1":
-         creacion()
-    # elif opc == "2":
-    #     ingreso(productos, asctime)
-    # elif opc == "3":
-    #     retiro_productos(productos, add_producto)
+        creacion()
+    elif opc == "2":
+        ingreso()
+    elif opc == "3":
+        retiro_productos()

@@ -1,10 +1,16 @@
 [
     {
-        "cod": 1,
-        "name": "asd",
-        "proveedor": "asd",
-        "cantidad": 30,
-        "bodega": "Norte"
-        
+        "cod": "01",
+        "name": "papas",
+        "proveedor": "lola",
+        "cantidad": 20,
+        "bodega": "Bodega Norte"
+    },
+    {
+        "cod": "01",
+        "name": "papas",
+        "proveedor": "lola",
+        "cantidad": 20,
+        "bodega": "Bodega Norte"
     }
 ]
