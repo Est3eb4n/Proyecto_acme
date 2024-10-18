@@ -4,13 +4,6 @@
         "name": "papas",
         "proveedor": "lola",
         "cantidad": 20,
-        "bodega": "Bodega Norte"
-    },
-    {
-        "cod": "01",
-        "name": "papas",
-        "proveedor": "lola",
-        "cantidad": 20,
-        "bodega": "Bodega Norte"
+        "bodega": "norte"
     }
 ]
