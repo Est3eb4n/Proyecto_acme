@@ -2,7 +2,7 @@ from reguistro_productos import menu
 from reguistro_productos import creacion
 from reguistro_productos import ingreso
 from reguistro_productos import retiro_productos
-
+from reguistro_productos import buscar
 from time import asctime
 
 
@@ -23,3 +23,5 @@ while True:
         ingreso()
     elif opc == "3":
         retiro_productos()
+    elif opc == "4":
+        buscar()

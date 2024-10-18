@@ -5,11 +5,11 @@ import json
 def menu():
             print("""
         ===========================================
-        ============= Menu Bancario ===============
+        ============ Menu inventario ==============
         =                                         =
         =   1. Registrar un producto              =
-        =   2. ingresar producto al inventadio    =
-        =   3. Retirar producto del inventadio    =
+        =   2. ingresar producto al inventario    =
+        =   3. Retirar producto del inventario    =
         =   4. Bucar un producto                  =
         =   5. Historial de productos             =
         =   6. Informe                            =
@@ -76,11 +76,11 @@ def ingreso():
 
         if ing == "1" or ing == "2" or ing == "3":
           if ing == "1":
-              bodega = "Bodega Norte"
+              bodega = "norte"
           elif ing == "2":
-              bodega = "Bodega Centro"
+              bodega = "centro"
           elif ing == "3":
-              bodega = "Bodega Centro"
+              bodega = "centro"
           try:
             producto["bodega"] = bodega
             print(f"El porducto al cual va a adicionar stock es {producto['name']} se van a agredar existencias a la {bodega}")
@@ -96,8 +96,6 @@ def ingreso():
                 # "fecha": f"{localtime()}",
               }
               print(movimiento)
-
-  stock.append(producto)
   file = open('stock.json', 'w')
   json.dump(stock,file,indent=4)
   file.close
@@ -114,33 +112,63 @@ def ingreso():
 def retiro_productos():
   stock = None
   try:
-    file = open('stock.json', 'r')
-    stock = json.load(file)
+    file = open('invetario.json', 'r')
+    salida_productos = json.load(file)
     file.close
   except Exception as error:
-          stock = []
+          salida_productos = []
 
   print("ingrese el codigo del producto que desea retirar")
   cod = input("=>  ")
-  # bodega = print("ingrese la bodega en la cual se encuentra el producto")
-  # input("=>  "); and producto["bodega"] == bodega
+  bodega = print("ingrese la bodega en la cual se encuentra el producto")
+  input("=>  "); 
 
-  for producto in stock:
-    if producto["cod"] == cod:
-      print(f"El producto que va a retirara es {producto['name']}, el cual se encuentra en la {producto['bodega']}")
+  for producto in salida_productos:
+    if producto["cod"] == cod or producto["bodega"] == bodega:
+      print(f"El producto que va a retirara es {producto['name']}, el cual se encuentra en la bodega {producto['bodega']}")
       try:
-        agregar = int(input("indique la cantidad que desea retirar = "))
+          agregar = int(input("indique la cantidad que desea retirar = "))
       except ValueError:print("Codido de producto errado")
       producto["cantidad"] -= agregar
-      for entrada in stock:
-            if entrada["cantidad"] == producto["cantidad"]:
+      for salida in salida_productos:
+            if salida["cantidad"] == salida["cantidad"]:
               movimiento ={
                 "tipo": "retiro de mercansia",
-                "descripccio": f"Se retiro {producto['cantidad']} kg de {producto['name']}",
+                "descripccio": f"Se retiro {agregar} kg de {producto['name']}",
                 # "fecha": f"{localtime()}",
               }
               print(movimiento)
-  stock.append(producto)
+  salida_productos.append(producto)
   file = open('stock.json', 'w')
-  json.dump(stock,file,indent=4)
+  json.dump(salida_productos,file,indent=4)
   file.close
+
+#==========================================================
+#|                 BUCAR DE PRODUCTOS                     |
+#==========================================================
+
+def buscar():
+  # try:
+    file = open('stock.json')
+    busqueda = json.load(file)
+    file.close
+  # except Exception as error:
+  #   buscar_productos = [] 
+      
+    cod = input("Ingrese el codigo del producto que desea consultar = ")
+    for encontrado in busqueda:
+      if encontrado["cod"] == cod:
+        print(f"El codigo del producto es = {encontrado['cod']}")
+        print(f"El producto consultado es = {encontrado['name']}")
+        print(f"El proveedor es = {encontrado['proveedor']}")
+        print(" ")
+        print(f"{'CANTIDAD':<12}",f"{'BODEGA':<12}")
+        print(f"{encontrado['cantidad']:<12}",f"{encontrado['bodega']:<12}")              
+#==========================================================
+#|                 BUCAR DE PRODUCTOS                     |
+#==========================================================
+
+print("""
+  bodeda [1]
+""")
+# print(f"{producto[cod]: <12}**")
